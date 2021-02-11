@@ -1,0 +1,15 @@
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.character-header {
+  padding: 10px;
+  font-weight: bold;
+  min-width: 100px;
+  width: 10%;
+}
+
+.character-value {
+  padding: 10px;
+}

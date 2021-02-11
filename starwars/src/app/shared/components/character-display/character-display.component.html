@@ -1,0 +1,49 @@
+<div class="character" *ngIf="character">
+  <div class="row">
+    <p class="character-header">Name</p>
+    <p class="character-value">{{character.name}}</p>
+  </div>
+
+  <div class="row">
+    <p class="character-header">Gender</p>
+    <p class="character-value">{{character.gender}}</p>
+  </div>
+
+  <div class="row">
+    <p class="character-header">Birth Year</p>
+    <p class="character-value">{{character.birthYear}}</p>
+  </div>
+
+  <div class="row">
+    <p class="character-header">Hair Color</p>
+    <p class="character-value">{{character.hairColor}}</p>
+  </div>
+  <div class="row">
+    <p class="character-header">Skin Color</p>
+    <p class="character-value">{{character.skinColor}}</p>
+  </div>
+  <div class="row">
+    <p class="character-header">Height</p>
+    <p class="character-value">{{character.height}}</p>
+  </div>
+  <div class="row">
+    <p class="character-header">Mass</p>
+    <p class="character-value">{{character.mass}}</p>
+  </div>
+  <div class="row">
+    <p class="character-header">Home Planet</p>
+    <p class="character-value">{{character.homePlanet}}</p>
+  </div>
+
+  <div class="row">
+    <p class="character-header" *ngIf="character.species && character.species.length > 0">Species</p>
+    <p class="character-value" *ngFor="let spec of character.species">{{spec}}</p>
+  </div>
+
+
+  <div class="row">
+    <p class="character-header" *ngIf="character.films && character.films.length > 0">Films</p>
+    <p class="character-value" *ngFor="let film of character.films">{{film}}</p>
+  </div>
+
+</div>
