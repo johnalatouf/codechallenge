@@ -1,0 +1,25 @@
+.character-button {
+  padding: 5px 20px;
+  margin: 0 5px;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 10px;
+  border: solid 2px #F5C025;
+  transition: 0.3s;
+}
+
+.character-button:hover {
+  background-color: #D6BF7C;
+  border: solid 2px #FFF;
+}
+
+.character-button.selected {
+  background-color: #D6BF7C;
+  border: solid 2px #FFF;
+}
+
+.character-button h3 {
+  color: white;
+  margin: 0;
+  padding: 0;
+}

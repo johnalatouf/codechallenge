@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {CharacterOption} from '../../models/character';
 
 @Component({
   selector: 'app-character-button',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharacterButtonComponent implements OnInit {
 
+  @Input()
+  public character: CharacterOption;
+
+  @Output()
+  public showCharacter: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public displayCharacter(id: string): void {
+    this.showCharacter.emit(id);
   }
 
 }

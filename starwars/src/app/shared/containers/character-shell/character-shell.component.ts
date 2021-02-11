@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CharacterApiService} from '../../services/character-api.service';
-import {Character} from '../../models/character';
+import {Character, CharacterOption} from '../../models/character';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -13,17 +13,24 @@ export class CharacterShellComponent implements OnInit, OnDestroy {
   public selectedCharacter: Character;
 
   public characterSub: Subscription;
+  public charactersToShowSub: Subscription;
+
+  public charactersToShow: Array<CharacterOption>;
 
   constructor(private characterService: CharacterApiService) { }
 
   ngOnInit(): void {
-    this.fetchCharacter(5);
+    this.fetchCharactersToShow(1);
   }
 
   ngOnDestroy(): void {
     if (this.characterSub) {
       this.characterSub.unsubscribe();
       this.characterSub = null;
+    }
+    if (this.charactersToShowSub) {
+      this.charactersToShowSub.unsubscribe();
+      this.charactersToShowSub = null;
     }
   }
 
@@ -32,5 +39,17 @@ export class CharacterShellComponent implements OnInit, OnDestroy {
       this.selectedCharacter = data;
       console.log(this.selectedCharacter);
     });
+  }
+
+  public fetchCharactersToShow(id: number): void {
+    this.charactersToShowSub = this.characterService.getCast(id).subscribe((data) => {
+      this.charactersToShow = data;
+      console.log(this.charactersToShow);
+    });
+  }
+
+  public displayCharacter(id: string): void {
+    const num = parseInt(id);
+    this.fetchCharacter(num);
   }
 }

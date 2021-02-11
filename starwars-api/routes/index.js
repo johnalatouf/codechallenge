@@ -104,4 +104,41 @@ function getSecondaryData(url) {
   });
 }
 
+router.get('/api/films/:id', function(req, res){
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+  res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+
+  var url = `https://swapi.dev/api/films/${req.params.id}/`;
+  var swapiRequest = https.get(url, (response) => {
+    if (response.statusCode === 200) {
+      let chunks = '';
+      response.on('data', (chunk) => {
+        chunks += chunk;
+      }).on('end',  async () => {
+        const rawFilm = JSON.parse(chunks);
+        const people = [];
+
+        for (const film of rawFilm.characters) {
+          const peopleData = await getSecondaryData(film).catch((err) => {
+            console.log(err);
+          });
+          const peopleURL = film.split('/');
+          people.push({
+            name: peopleData.name,
+            id: peopleURL[peopleURL.length - 2]
+          });
+        }
+
+        res.json(people);
+      });
+    } else {
+      res.send(error);
+    }
+  }).on('error', (error) => {
+    res.error();
+  });
+});
+
 module.exports = router;

@@ -1,5 +1,9 @@
-<app-character-display
+<app-character-display class="display"
   [character]="selectedCharacter"
 >
 
 </app-character-display>
+<app-character-button-menu class="footer"
+  [characters]="charactersToShow"
+  (showCharacter)="displayCharacter($event)"
+></app-character-button-menu>

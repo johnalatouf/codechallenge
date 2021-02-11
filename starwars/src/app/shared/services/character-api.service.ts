@@ -12,8 +12,16 @@ export class CharacterApiService {
 
   constructor(private http: HttpClient) { }
 
+  // get the character info
   public getCharacter(id): Observable<any> {
     const url = `${this.baseUrl}/api/characters/${id}`;
+    return this.http.get(url);
+  }
+
+  // get the names and ids of characters of a film
+  public getCast(id): Observable<any> {
+    const url = `${this.baseUrl}/api/films/${id}`;
+    console.log(url);
     return this.http.get(url);
   }
 }

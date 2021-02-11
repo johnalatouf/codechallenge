@@ -19,3 +19,8 @@ export class Character {
   }>;
   films: Array<{ title: string; director: string; producer: string; releaseDate: string; }>;
 }
+
+export class CharacterOption {
+  name: string;
+  id: string;
+}

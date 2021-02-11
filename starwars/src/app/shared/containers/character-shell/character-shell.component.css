@@ -1,0 +1,15 @@
+:host {
+  height: calc(100% - 5px);
+  display: flex;
+  flex-direction: column;
+
+}
+.display {
+  /*flex: 1 0 auto;*/
+  flex-grow: 1;
+  overflow: auto;
+  min-height: 2em;
+}
+.footer {
+  flex-shrink: 0;
+}
