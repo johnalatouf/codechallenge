@@ -1,0 +1,7 @@
+.character-menu {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  overflow-x: scroll;
+  padding: 5px 0 10px 0;
+}

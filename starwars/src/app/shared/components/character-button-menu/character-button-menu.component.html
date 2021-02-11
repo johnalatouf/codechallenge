@@ -1,0 +1,9 @@
+<div class="character-menu">
+<app-character-button
+  *ngFor="let character of characters"
+  [character]="character"
+  (showCharacter)="displayCharacter($event)"
+>
+
+</app-character-button>
+</div>
