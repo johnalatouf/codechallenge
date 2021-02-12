@@ -1,15 +1,59 @@
+.character {
+  padding: 2vh 5vw;
+}
+
 .row {
   display: flex;
   flex-direction: row;
+  font-size: 14pt;
 }
 
 .character-header {
   padding: 10px;
   font-weight: bold;
   min-width: 100px;
-  width: 10%;
+  width: 12%;
 }
 
 .character-value {
   padding: 10px;
+}
+
+.sub-row {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 10px;
+  font-size: 12pt;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.row:nth-child(even):not(.has-sub) {
+  background-color: #282b2c;
+}
+
+.sub-row .character-header {
+  padding: 2px 15px;
+  font-weight: bold;
+  width: unset;
+}
+
+.sub-row .character-value {
+  padding: 2px 15px 10px 15px;
+}
+
+col {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-header {
+  min-width: 200px;
+}
+
+.sub-header {
+  padding-bottom: 3px;
+}
+
+.row.has-sub {
+  background-color: rgba(255, 255, 255, 0.15);
 }

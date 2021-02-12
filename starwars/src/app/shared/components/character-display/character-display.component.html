@@ -1,7 +1,6 @@
 <div class="character" *ngIf="character">
   <div class="row">
-    <p class="character-header">Name</p>
-    <p class="character-value">{{character.name}}</p>
+    <h1 class="character-value">{{character.name}}</h1>
   </div>
 
   <div class="row">
@@ -18,7 +17,7 @@
     <p class="character-header">Hair Color</p>
     <p class="character-value">{{character.hairColor}}</p>
   </div>
-  <div class="row">
+  <div class="row ">
     <p class="character-header">Skin Color</p>
     <p class="character-value">{{character.skinColor}}</p>
   </div>
@@ -30,20 +29,67 @@
     <p class="character-header">Mass</p>
     <p class="character-value">{{character.mass}}</p>
   </div>
-  <div class="row">
-    <p class="character-header">Home Planet</p>
-    <p class="character-value">{{character.homePlanet}}</p>
+  <div class="row has-sub">
+    <p class="character-header sub-header">Home Planet</p>
+  </div>
+  <div class="sub-row">
+    <div class="col">
+      <p class="character-header">Title</p>
+      <p class="character-value">{{character.homePlanet.title}}</p>
+    </div>
+    <div class="col">
+      <p class="character-header">Terrain</p>
+      <p class="character-value">{{character.homePlanet.terrain}}</p>
+    </div>
+    <div class="col">
+      <p class="character-header">Population</p>
+      <p class="character-value">{{character.homePlanet.population}}</p>
+    </div>
   </div>
 
-  <div class="row">
-    <p class="character-header" *ngIf="character.species && character.species.length > 0">Species</p>
-    <p class="character-value" *ngFor="let spec of character.species">{{spec}}</p>
+  <div class="row has-sub">
+    <p class="character-header sub-header" *ngIf="character.species && character.species.length > 0">Species</p>
+  </div>
+  <div class="sub-row" *ngFor="let spec of character.species">
+    <div class="col">
+      <p class="character-header">Name</p>
+      <p class="character-value">{{spec.name}}</p>
+    </div>
+    <div class="col">
+      <p class="character-header">Average Lifespan</p>
+      <p class="character-value">{{spec.averageLifespan}}</p>
+    </div>
+    <div class="col">
+      <p class="character-header">Classification</p>
+      <p class="character-value">{{spec.classification}}</p>
+    </div>
+    <div class="col">
+      <p class="character-header">Language</p>
+      <p class="character-value">{{spec.language}}</p>
+    </div>
   </div>
 
 
-  <div class="row">
-    <p class="character-header" *ngIf="character.films && character.films.length > 0">Films</p>
-    <p class="character-value" *ngFor="let film of character.films">{{film}}</p>
+  <div class="row has-sub">
+    <p class="character-header sub-header" *ngIf="character.films && character.films.length > 0">Films</p>
+  </div>
+  <div class="sub-row" *ngFor="let film of character.films">
+    <div class="col">
+      <p class="character-header title-header">Title</p>
+      <p class="character-value">{{film.title}}</p>
+    </div>
+    <div class="col">
+      <p class="character-header">Director</p>
+      <p class="character-value">{{film.director}}</p>
+    </div>
+    <div class="col">
+      <p class="character-header">Producer</p>
+      <p class="character-value">{{film.producer}}</p>
+    </div>
+    <div class="col">
+      <p class="character-header">Release Date</p>
+      <p class="character-value">{{film.releaseDate}}</p>
+    </div>
   </div>
 
 </div>

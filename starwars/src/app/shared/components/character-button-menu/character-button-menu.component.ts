@@ -1,5 +1,5 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2} from '@angular/core';
-import {CharacterOption} from '../../models/character';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { CharacterOption } from '../../models/character';
 
 @Component({
   selector: 'app-character-button-menu',

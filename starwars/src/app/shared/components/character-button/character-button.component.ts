@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CharacterOption} from '../../models/character';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CharacterOption } from '../../models/character';
 
 @Component({
   selector: 'app-character-button',

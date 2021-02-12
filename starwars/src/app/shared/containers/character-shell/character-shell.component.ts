@@ -1,7 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CharacterApiService} from '../../services/character-api.service';
-import {Character, CharacterOption} from '../../models/character';
-import {Subscription} from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CharacterApiService } from '../../services/character-api.service';
+import { Character, CharacterOption } from '../../models/character';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-character-shell',
@@ -16,6 +16,7 @@ export class CharacterShellComponent implements OnInit, OnDestroy {
   public charactersToShowSub: Subscription;
 
   public charactersToShow: Array<CharacterOption>;
+  public loading: boolean = false;
 
   constructor(private characterService: CharacterApiService) { }
 
@@ -35,16 +36,24 @@ export class CharacterShellComponent implements OnInit, OnDestroy {
   }
 
   public fetchCharacter(id: number): void {
+    this.loading = true;
     this.characterSub = this.characterService.getCharacter(id).subscribe((data) => {
       this.selectedCharacter = data;
-      console.log(this.selectedCharacter);
+      this.loading = false;
+    }, (error) => {
+      this.loading = false;
+      console.log(error);
     });
   }
 
   public fetchCharactersToShow(id: number): void {
+    this.loading = true;
     this.charactersToShowSub = this.characterService.getCast(id).subscribe((data) => {
       this.charactersToShow = data;
-      console.log(this.charactersToShow);
+      this.loading = false;
+    }, (error) => {
+      this.loading = false;
+      console.log(error);
     });
   }
 
